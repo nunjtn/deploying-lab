@@ -33,7 +33,7 @@ pipeline {
      
       steps {
       sh '''
-        oc rollout latest developmentconfig/home-automation -n jitjiam-deploying-lab-test
+        oc rollout latest deploymentconfig/home-automation -n jitjiam-deploying-lab-test
       '''
         }
      }

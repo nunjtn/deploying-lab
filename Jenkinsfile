@@ -29,9 +29,13 @@ pipeline {
         }
       }
     stage('Deploy to TEST') {
+      when { not {branch "main" } }
+     
+      step {
       sh '''
         oc rollout latest developmentconfig/home-automation -n jitjiam-deploying-lab-test
       '''
+        }
      }
   }
 }

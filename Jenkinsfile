@@ -26,7 +26,12 @@ pipeline {
            -Dquarkus.container-image.password="$QUAY_PSW" \
            -Dquarkus.container-image.push=true
         '''
-            }
         }
+      }
+    stage('Deploy to TEST') {
+      sh '''
+        oc rollout latest developmentconfig/home-automation -n jitjiam-deploying-lab-test
+      '''
+     }
   }
 }

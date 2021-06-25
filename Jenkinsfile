@@ -37,5 +37,16 @@ pipeline {
       '''
         }
      }
+    stage ("Deploy to PROD"){
+        when { branch "main" }
+
+    steps {
+
+        sh '''
+            oc rollout latest deploymentconfig/home-automation \
+            -n jitjiam-deploying-lab-prod
+        '''
+    }
+    }
   }
 }
